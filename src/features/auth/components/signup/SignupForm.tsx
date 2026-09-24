@@ -184,7 +184,7 @@ export default function SignupForm() {
               <input
                 type="checkbox"
                 id="privacy"
-                className="h-4 w-4 mt-1 me-2 text-green-600 focus:ring-green-500 border-gray-300 rounded"
+                className="h-4 w-4 mt-1 me-2 text-green-600 focus:ring-green-500 border-gray-300 rounded "
                 {...register("terms")}
               />
               <label htmlFor="privacy" className="text-sm text-gray-700">
