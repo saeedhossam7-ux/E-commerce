@@ -74,7 +74,7 @@ export default function Navbar() {
                   About
                 </li>
                 <li className=" mx-2 text-sm text-gray-600 hover:text-green-600  ">
-                  Contact
+                 <Link href="/contact">Contact Us</Link>
                 </li>
                 <li className=" mx-2 text-sm text-gray-600 hover:text-green-600 cursor-pointer flex items-center space-x-1">
                   <span>EGY</span>
