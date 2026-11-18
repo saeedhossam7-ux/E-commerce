@@ -45,7 +45,7 @@ export default function Term() {
 
         <main className="container mx-auto px-6 mt-10 ">
           <section className="mb-8 ">
-            <div className="bg-yellow-50 border border-yellow-300 rounded-2xl shadow-sm p-4 md:p-6">
+            <div className="bg-yellow-50 dark:bg-yellow-950 border border-yellow-300 rounded-2xl shadow-sm p-4 md:p-6">
               <div className="flex items-center gap-4">
                 <div className=" bg-orange-400 rounded-xl p-3">
                   <FontAwesomeIcon
@@ -54,10 +54,10 @@ export default function Term() {
                   />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-yellow-800">
+                  <h3 className="font-semibold text-yellow-800 dark:text-orange-400">
                     Important Notice
                   </h3>
-                  <p className="text-sm text-yellow-700 mt-1">
+                  <p className="text-sm text-yellow-700 mt-1 dark:text-orange-400">
                     By accessing and using FreshCart, you accept and agree to be
                     bound by the terms and provisions of this agreement. Please
                     read these terms carefully before using our services.
@@ -381,10 +381,10 @@ export default function Term() {
           </section>
           <div className="my-12 border-t border-gray-200 pt-8 lg:flex items-center justify-between">
             <Link href="/">
-              <span className="text-gray-800 bg-gray-100 px-5 py-3 rounded-lg hover:bg-gray-200 transition-colors duration-300 mb-2">
+              <span className="group text-gray-800 bg-gray-100 px-5 py-3 dark:hover:text-black rounded-lg hover:bg-gray-200 transition-colors duration-300 mb-2">
                 <FontAwesomeIcon
                   icon={faArrowLeft}
-                  className="text-sm text-gray-600"
+                  className="text-sm text-gray-600 dark:group-hover:text-black"
                 />{" "}
                 Back to Home
               </span>

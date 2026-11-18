@@ -28,7 +28,7 @@ export default async function Categoires() {
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
             {respone.data.map((category) => (
               <Link key={category._id} href={`/categories/${category._id}`}>
-                <div className="bg-white rounded-xl shadow p-6 flex flex-col items-center text-center hover:shadow-md transition-shadow cursor-pointer">
+                <div className="bg-white rounded-xl shadow p-6 flex flex-col items-center text-center hover:shadow-md  transition-shadow cursor-pointer dark:border dark:border-gray-500 dark:shadow-gray-500">
                   <div className="h-20 w-20 rounded-full bg-gray-100 flex items-center justify-center overflow-hidden mb-4">
                     <Image
                       src={category.image}

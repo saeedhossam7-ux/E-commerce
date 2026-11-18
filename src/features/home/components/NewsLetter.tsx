@@ -12,11 +12,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 export default function NewsLetter() {
   return (
     <>
-      <section className="max-w-11/12 lg:max-w-9/12 mx-auto bg-green-50 rounded-2xl p-8 md:p-12 shadow-2xl shadow-green-50 mb-20">
+      <section className="max-w-11/12 lg:max-w-9/12 mx-auto dark:bg-green-950 dark:shadow-none bg-green-50 rounded-2xl p-8 md:p-12 shadow-2xl shadow-green-50 mb-20">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
           <div className="md:col-span-7">
             <div className="flex items-center gap-4 mb-6">
-              <div className="flex items-center justify-center w-12 h-12 bg-white/60 rounded-lg shadow-inner">
+              <div className="flex items-center justify-center w-12 h-12 bg-white/60 dark:bg-white rounded-lg shadow-inner">
                 <FontAwesomeIcon icon={faEnvelope} className="text-green-500" />
               </div>
               <div>
@@ -36,15 +36,15 @@ export default function NewsLetter() {
             </p>
 
             <div className="flex flex-wrap gap-3 mb-6">
-              <span className="flex items-center gap-2 bg-white/80 border border-emerald-100 text-emerald-600 px-4 py-2 rounded-full text-sm">
+              <span className="flex items-center gap-2 bg-white/80 dark:bg-white border border-emerald-100 text-emerald-600 px-4 py-2 rounded-full text-sm">
                 <FontAwesomeIcon icon={faCheck} className="text-green-500" />
                 Fresh Picks Weekly
               </span>
-              <span className="flex items-center gap-2 bg-white/80 border border-emerald-100 text-emerald-600 px-4 py-2 rounded-full text-sm">
+              <span className="flex items-center gap-2 bg-white/80 dark:bg-white border border-emerald-100 text-emerald-600 px-4 py-2 rounded-full text-sm">
                 <FontAwesomeIcon icon={faTruck} className="text-green-500" />
                 Free Delivery Codes
               </span>
-              <span className="flex items-center gap-2 bg-white/80 border border-emerald-100 text-emerald-600 px-4 py-2 rounded-full text-sm">
+              <span className="flex items-center gap-2 bg-white/80 dark:bg-white border border-emerald-100 text-emerald-600 px-4 py-2 rounded-full text-sm">
                 <FontAwesomeIcon icon={faUser} className="text-green-500" />
                 Members-Only Deals
               </span>

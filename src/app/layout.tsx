@@ -9,6 +9,7 @@ import { CartState } from "../features/cart/store/cart.slice";
 import Navbar from "../components/shared/Navbar";
 import { getLoggedUserWishlist } from "../features/wishlist/server/wishlist.action";
 import { WishlistState } from "../features/wishlist/store/wishlist.store";
+import Provider from "../components/providers/ThemeProvider";
 
 let defaultCartState: CartState = {
   cartId: null,
@@ -65,8 +66,8 @@ export default async function RootLayout({
   }
 
   return (
-    <html lang="en">
-      <body>
+    <html lang="en" >
+      <body className="bg-white text-black dark:bg-gray-950 dark:text-white">
         <Providers
           preloadedState={{
             auth: valueAuth,
@@ -74,9 +75,11 @@ export default async function RootLayout({
             wishlist: WishlistState,
           }}
         >
-          <Navbar />
-          {children}
-          <Footer />
+          <Provider>
+            <Navbar />
+            {children}
+            <Footer />
+          </Provider>
         </Providers>
       </body>
     </html>

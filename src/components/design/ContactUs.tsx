@@ -186,7 +186,7 @@ export default function ContactUs() {
                     <label className="block text-sm font-medium text-gray-700">
                       Subject
                     </label>
-                    <select className="mt-1 block w-full border border-gray-300 rounded-md p-2 outline-none focus:ring-green-500 focus:border-green-500">
+                    <select className="mt-1 block w-full border dark:bg-black cursor-pointer border-gray-300 rounded-md p-2 outline-none focus:ring-green-500 focus:border-green-500">
                       <option>Select a subject</option>
                       <option>General Inquiry</option>
                       <option>Order Support</option>
@@ -217,7 +217,7 @@ export default function ContactUs() {
                   </button>
                 </form>
               </div>
-              <div className="mt-6 bg-green-50 p-6 rounded-xl border border-green-100">
+              <div className="mt-6 bg-green-50 dark:bg-green-950 dark:border-green-500 p-6 rounded-xl border border-green-100">
                 <div className="flex items-start gap-3">
                   <span className="text-green-600 text-xl w-6 h-6 flex items-center justify-center bg-white shadow p-6 rounded-2xl">
                     <FontAwesomeIcon icon={faQuestionCircle} />
@@ -226,7 +226,7 @@ export default function ContactUs() {
                     <h3 className="font-semibold">
                       Looking for quick answers?
                     </h3>
-                    <p className="text-sm text-gray-600">
+                    <p className="text-sm text-gray-600 dark:text-gray-200">
                       Check out our Help Center for frequently asked questions
                       about orders, shipping, returns, and more.
                     </p>

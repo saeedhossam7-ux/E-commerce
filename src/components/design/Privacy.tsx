@@ -47,7 +47,7 @@ export default function Privacy() {
 
         <main className="container mx-auto px-6 mt-10 ">
           <section className="mb-8 ">
-            <div className="bg-green-50 border border-green-300 rounded-2xl shadow-sm p-4 md:p-8">
+            <div className="bg-green-50 dark:bg-green-950 border border-green-300 rounded-2xl shadow-sm p-4 md:p-8">
               <div className="flex items-center gap-4">
                 <div className=" bg-green-500 rounded-xl p-3">
                   <FontAwesomeIcon
@@ -56,10 +56,10 @@ export default function Privacy() {
                   />
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold text-green-900">
+                  <h3 className="text-lg dark:text-white font-bold text-green-900">
                     Your Privacy Matters
                   </h3>
-                  <p className="text-lg font-semibold text-green-800 mt-1">
+                  <p className="text-lg font-semibold text-green-800 dark:text-white mt-1">
                     This Privacy Policy describes how FreshCart collects, uses,
                     and protects your personal information when you use our
                     services. We are committed to ensuring that your privacy is
@@ -426,10 +426,10 @@ export default function Privacy() {
           </section>
           <div className="my-12 border-t border-gray-200 pt-8 lg:flex items-center justify-between">
             <Link href="/">
-              <span className="text-gray-800 bg-gray-100 px-5 py-3 rounded-lg hover:bg-gray-200 transition-colors duration-300 mb-2">
+              <span className="group text-gray-800 bg-gray-100 px-5 py-3 rounded-lg dark:hover:text-black hover:bg-gray-200 transition-colors duration-300 mb-2">
                 <FontAwesomeIcon
                   icon={faArrowLeft}
-                  className="text-sm text-gray-600"
+                  className="text-sm text-gray-600 dark:group-hover:text-black"
                 />
                 Back to Home
               </span>

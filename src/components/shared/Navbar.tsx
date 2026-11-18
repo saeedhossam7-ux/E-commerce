@@ -26,11 +26,12 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { AppState } from "@/src/store/store";
 import uselogout from "@/src/hooks/uselogout";
+import ThemeBtn from "../ui/ThemeBtn";
 
 export default function Navbar() {
   const [isMounted, setIsMounted] = useState(false);
   const { logout } = uselogout();
-    const { isAuthentication } = useSelector(
+  const { isAuthentication } = useSelector(
     (appState: AppState) => appState.auth,
   );
   const wishlistProducts = useSelector((state: AppState) => state.wishlist);
@@ -43,18 +44,18 @@ export default function Navbar() {
     setIsMenuOpen(!isMenuOpen);
   }
   if (!isMounted) {
-    return null; 
+    return null;
   }
 
   return (
     <>
-      <nav className="sticky top-0 z-50 bg-white ">
+      <nav className="sticky top-0 z-50 bg-white">
         <div className=" container mx-auto ">
           <div className="hidden lg:flex justify-between items-center pb-2 pt-2 border-b border-gray-300 ">
             <div className="flex space-x-6">
               <span className="flex">
                 <FontAwesomeIcon icon={faPhone} className="mt-1 w-3 h-3" />
-                <span className="ml-2 text-sm text-gray-600">
+                <span className="ml-2 text-sm text-gray-600 ">
                   +1-(800)-123-4567
                 </span>
               </span>
@@ -66,25 +67,29 @@ export default function Navbar() {
               </span>
             </div>
             <div>
-              <ul className="flex mt-2 md:mt-0">
-                <li className=" mx-2 text-sm text-gray-600 hover:text-green-600 ">
-                  Track Order
-                </li>
-                <li className=" mx-2 text-sm text-gray-600 hover:text-green-600 ">
-                  About
-                </li>
-                <li className=" mx-2 text-sm text-gray-600 hover:text-green-600  ">
-                 <Link href="/contact">Contact Us</Link>
-                </li>
-                <li className=" mx-2 text-sm text-gray-600 hover:text-green-600 cursor-pointer flex items-center space-x-1">
-                  <span>EGY</span>
-                  <FontAwesomeIcon icon={faAngleDown} className="w-3 h-3" />
-                </li>
-                <li className=" mx-2 text-sm text-gray-600 hover:text-green-600 cursor-pointer flex items-center space-x-1">
-                  <span>English</span>
-                  <FontAwesomeIcon icon={faAngleDown} className="w-3 h-3" />
-                </li>
-              </ul>
+
+              <div className="flex items-center gap-2">
+                <ThemeBtn />
+                <ul className="flex mt-2 md:mt-0">
+                  <li className=" mx-2 text-sm text-gray-600  hover:text-green-600 ">
+                    Track Order
+                  </li>
+                  <li className=" mx-2 text-sm text-gray-600 hover:text-green-600 ">
+                    About
+                  </li>
+                  <li className=" mx-2 text-sm text-gray-600 hover:text-green-600  ">
+                    <Link href="/contact">Contact Us</Link>
+                  </li>
+                  <li className=" mx-2 text-sm text-gray-600 hover:text-green-600 cursor-pointer flex items-center space-x-1">
+                    <span>EGY</span>
+                    <FontAwesomeIcon icon={faAngleDown} className="w-3 h-3" />
+                  </li>
+                  <li className=" mx-2 text-sm text-gray-600 hover:text-green-600 cursor-pointer flex items-center space-x-1">
+                    <span>English</span>
+                    <FontAwesomeIcon icon={faAngleDown} className="w-3 h-3" />
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
           <div className="flex justify-between items-center h-22 px-4 md:px-0 ">
@@ -188,7 +193,9 @@ export default function Navbar() {
                 </>
               )}
             </div>
-            <button
+<div className="flex gap-2 justify-center items-center">
+  <span className="lg:hidden"><ThemeBtn /></span>
+              <button
               className="lg:hidden bg-green-500 text-white p-1.5 rounded-lg cursor-pointer"
               onClick={toggleMenu}
             >
@@ -198,6 +205,7 @@ export default function Navbar() {
                 <FontAwesomeIcon icon={faBars} className="w-6 h-6 " />
               )}
             </button>
+</div>
           </div>
         </div>
         <div className=" space-x-2 bg-gray-100 py-3 hidden lg:flex">
@@ -303,7 +311,7 @@ export default function Navbar() {
                   className="md:w-32 h-auto object-contain"
                 />
                 <button
-                  className=" bg-gray-200 p-1.5 rounded-full cursor-pointer"
+                  className=" bg-gray-200 dark:text-gray-700 p-1.5 rounded-full cursor-pointer"
                   onClick={toggleMenu}
                 >
                   <FontAwesomeIcon icon={faXmark} className="w-5 h-5" />
@@ -325,10 +333,10 @@ export default function Navbar() {
               <div>
                 <h2 className="text-lg font-semibold mb-5">Main Menu</h2>
                 <ul>
-                  <li className="mb-10 hover:bg-gray-100 p-1">
+                  <li className="mb-2 hover:bg-gray-100 p-1">
                     <Link
                       href="/wishlist"
-                      className=" flex gap-2 cursor-pointer hover:text-green-600 transition text-gray-700"
+                      className=" flex items-center gap-2 cursor-pointer hover:text-green-600 transition text-gray-700"
                     >
                       <FontAwesomeIcon icon={faHeart} className="w-5 h-5" />
                       {wishlistProducts.count > 0 && (
@@ -339,10 +347,10 @@ export default function Navbar() {
                       <span className="text-gray-600 ">Wishlist</span>
                     </Link>
                   </li>
-                  <li className="mb-9 hover:bg-gray-100 p-1">
+                  <li className="mb-2 hover:bg-gray-100 p-1">
                     <Link
                       href="/cart"
-                      className="relative flex gap-2 cursor-pointer hover:text-green-600 transition text-gray-700"
+                      className="relative flex items-center gap-2 cursor-pointer hover:text-green-600 transition text-gray-700"
                     >
                       <FontAwesomeIcon
                         icon={faShoppingCart}
@@ -356,10 +364,10 @@ export default function Navbar() {
                       <span className="text-gray-600">Cart</span>
                     </Link>
                   </li>
-                  <li className="mb-5 hover:bg-gray-100 p-1">
+                  <li className="mb-2 hover:bg-gray-100 p-1">
                     <Link
                       href="/profile"
-                      className="flex gap-2 cursor-pointer hover:text-green-600 transition text-gray-700"
+                      className="flex items-center gap-2 cursor-pointer hover:text-green-600 transition text-gray-700"
                     >
                       <FontAwesomeIcon icon={faUser} className="w-5 h-5" />
                       <span className="text-gray-600 ">Acount</span>
@@ -371,12 +379,12 @@ export default function Navbar() {
                   <ul>
                     {isAuthentication ? (
                       <li
-                        className="mt-9 hover:bg-gray-100 p-1"
+                        className="mt-2 hover:bg-gray-100 p-1"
                         onClick={logout}
                       >
                         <Link
                           href=""
-                          className="flex gap-2 cursor-pointer hover:text-red-600 transition text-gray-700"
+                          className="flex items-center gap-2 cursor-pointer hover:text-red-600 transition text-gray-700"
                         >
                           <FontAwesomeIcon
                             icon={faArrowRightFromBracket}
@@ -387,10 +395,10 @@ export default function Navbar() {
                       </li>
                     ) : (
                       <>
-                        <li className="mb-9 hover:bg-gray-100 p-1">
+                        <li className="mb-2 hover:bg-gray-100 p-1">
                           <Link
                             href="/signup"
-                            className="flex gap-2 cursor-pointer hover:text-green-600 transition text-gray-700 "
+                            className="flex items-center gap-2 cursor-pointer hover:text-green-600 transition text-gray-700 "
                           >
                             <FontAwesomeIcon
                               icon={faUserPlus}
@@ -400,10 +408,10 @@ export default function Navbar() {
                           </Link>
                         </li>
 
-                        <li className="mb-9 hover:bg-gray-100 p-1">
+                        <li className="mb-2 hover:bg-gray-100 p-1">
                           <Link
                             href="/login"
-                            className="flex gap-2 cursor-pointer hover:text-green-600 transition text-gray-700 "
+                            className="flex items-center gap-2 cursor-pointer hover:text-green-600 transition text-gray-700 "
                           >
                             <FontAwesomeIcon
                               icon={faIdCard}

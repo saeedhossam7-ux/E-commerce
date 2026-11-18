@@ -9,7 +9,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 export default function PromoBanner() {
   return (
     <>
-      <div className="bg-green-50 py-2 px-4">
+      <div className="bg-green-50 dark:bg-green-950 py-2 px-4">
         <div className="container px-12 mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {/* Free Shipping */}
