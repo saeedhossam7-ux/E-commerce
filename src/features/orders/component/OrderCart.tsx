@@ -111,9 +111,9 @@ export default function OrderCart({ orderinfo }: { orderinfo: Order }) {
             </div>
           </div>
         </div>
-        <div className="flex items-center flex-col">
+        <div className="flex items-center flex-col gap-1">
           <span
-            className={`${orderinfo.paymentMethodType === "card" ? "bg-green-100" : "bg-gray-100"} px-2 py-1 rounded-xl text-lg`}
+            className={`${orderinfo.paymentMethodType === "card" ? "bg-green-100" : "bg-gray-100"} px-2 py-1 rounded-xl text-lg dark:bg-gray-800`}
           >
             <FontAwesomeIcon
               icon={
@@ -128,17 +128,9 @@ export default function OrderCart({ orderinfo }: { orderinfo: Order }) {
               }
             />
           </span>
-          <div className="p-2 bg-purple-100 rounded-full">
-            <svg
-              className="h-6 w-6 text-green-600"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-            >
-              <path d="M5 3…"></path>
-            </svg>
-          </div>
+
           <button
-            className={`px-2 py-1 rounded-xl  flex items-center justify-center  cursor-pointer ${isExpanded ? "bg-green-500 hover:bg-green-600 text-white" : "bg-gray-50 hover:bg-gray-100"} `}
+            className={`px-2 py-1 rounded-xl  flex items-center justify-center  cursor-pointer ${isExpanded ? "bg-green-500 hover:bg-green-600 text-white" : "bg-gray-50 dark:bg-gray-950 dark:hover:bg-gray-900 hover:bg-gray-100"} `}
             onClick={() => {
               setIsExpanded(!isExpanded);
             }}
@@ -157,7 +149,7 @@ export default function OrderCart({ orderinfo }: { orderinfo: Order }) {
         <div className="border-t border-gray-100 bg-gray-50">
           <div className="p-4 flex flex-col gap-8">
             <div>
-              <h3 className="flex items-center text-sm font-medium text-green-600">
+              <h3 className="flex items-center text-sm font-medium text-green-600 mb-2">
                 <FontAwesomeIcon
                   icon={faReceipt}
                   className="w-4 h-4 p-2 rounded-xl bg-green-50 text-green-600 mr-2 text-lg"
@@ -221,15 +213,15 @@ export default function OrderCart({ orderinfo }: { orderinfo: Order }) {
                   {orderinfo.shippingAddress?.phone || "No Phone provided"}
                 </p>
               </div>
-              <div className="md:w-1/3 bg-blue-50 rounded-xl p-4">
-                <h3 className="flex items-center text-sm font-medium text-gray-700">
+              <div className="md:w-1/3 bg-blue-50 dark:bg-blue-950 rounded-xl p-4">
+                <h3 className="flex items-center text-sm font-medium text-gray-700 dark:text-gray-100">
                   <FontAwesomeIcon
                     icon={faTruck}
                     className="w-4 h-4 p-2 rounded-xl bg-blue-600 text-white mr-2 text-md"
                   />
                   Order Summary
                 </h3>
-                <div className="mt-3 space-y-2 text-sm text-gray-800">
+                <div className="mt-3 space-y-2 text-sm text-gray-800 dark:text-gray-100">
                   <div className="flex justify-between">
                     <span>Subtotal</span>
                     <span>{orderinfo.totalOrderPrice} EGP</span>

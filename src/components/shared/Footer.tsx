@@ -55,7 +55,7 @@ export default function Footer() {
             <h2 className="text-xl font-bold mb-5">Customer Service</h2>
             <ul className="space-y-2">
               <li><a href="/profile" className="text-xl text-gray-600 hover:text-green-600">My Account</a></li>
-              <li><a href="#" className="text-xl text-gray-600 hover:text-green-600">Order History</a></li>
+              <li><Link href="/orders" className="text-xl text-gray-600 hover:text-green-600">Order History</Link></li>
               <li><a href="/wishlist" className="text-xl text-gray-600 hover:text-green-600">Wishlist</a></li>
               <li><a href="#" className="text-xl text-gray-600 hover:text-green-600">Returns & Refunds</a></li>
               <li><a href="#" className="text-xl text-gray-600 hover:text-green-600">Help Center</a></li>

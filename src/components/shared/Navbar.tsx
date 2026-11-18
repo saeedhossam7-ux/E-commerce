@@ -71,9 +71,9 @@ export default function Navbar() {
               <div className="flex items-center gap-2">
                 <ThemeBtn />
                 <ul className="flex mt-2 md:mt-0">
-                  <li className=" mx-2 text-sm text-gray-600  hover:text-green-600 ">
+                  <Link href='/orders' className=" mx-2 text-sm text-gray-600  hover:text-green-600 ">
                     Track Order
-                  </li>
+                  </Link>
                   <li className=" mx-2 text-sm text-gray-600 hover:text-green-600 ">
                     About
                   </li>
