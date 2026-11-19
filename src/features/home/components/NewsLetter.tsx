@@ -76,7 +76,7 @@ export default function NewsLetter() {
 
           <div className="md:col-span-4">
             <div className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white rounded-2xl p-6 shadow-xl">
-              <div className="flex items-center justify-between mb-4">
+              <div className="flex items-center gap-1 justify-between mb-4">
                 <div className="text-sm uppercase bg-emerald-700/20 text-emerald-300 px-3 py-1 rounded-full">
                   Mobile App
                 </div>

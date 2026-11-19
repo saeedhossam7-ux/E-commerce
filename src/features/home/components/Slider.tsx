@@ -34,7 +34,7 @@ export default function Slider() {
                 >
                   <div className="absolute inset-0 bg-linear-to-r from-green-500/90 to-green-400/10 "></div>
                   <div className="relative h-full flex items-center">
-                    <div className="max-w-xl ml-6 md:ml-12 p-6 pl-15 md:p-12 text-white">
+                    <div className="max-w-xl ml-6 md:ml-12 p-6 pl-11 md:p-12 text-white">
                       <h2 className="text-xl md:text-3xl font-semibold max-w-96">
                         Fresh Organic Produce Delivered to Your Door
                       </h2>
@@ -61,7 +61,7 @@ export default function Slider() {
                 >
                   <div className="absolute inset-0 bg-linear-to-r from-green-500/90 to-green-400/10"></div>
                   <div className="relative h-full flex items-center">
-                    <div className="max-w-xl ml-6 md:ml-12 p-6 pl-15 md:p-12 text-white">
+                    <div className="max-w-xl ml-6 md:ml-12 p-6 pl-11 md:p-12 text-white">
                       <h2 className="text-xl md:text-3xl font-semibold">
                         Organic Vegetables & Fruits
                       </h2>
@@ -88,7 +88,7 @@ export default function Slider() {
                 >
                   <div className="absolute inset-0 bg-linear-to-r from-green-500/90 to-green-400/10"></div>
                   <div className="relative h-full flex items-center">
-                    <div className="max-w-xl ml-6 md:ml-12 p-6 pl-15 md:p-12 text-white">
+                    <div className="max-w-xl ml-6 md:ml-12 p-6 pl-11 md:p-12 text-white">
                       <h2 className="text-xl md:text-3xl font-semibold">
                         Fresh Dairy & Bakery
                       </h2>

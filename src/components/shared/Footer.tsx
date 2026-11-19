@@ -58,7 +58,7 @@ export default function Footer() {
               <li><Link href="/orders" className="text-xl text-gray-600 hover:text-green-600">Order History</Link></li>
               <li><a href="/wishlist" className="text-xl text-gray-600 hover:text-green-600">Wishlist</a></li>
               <li><a href="#" className="text-xl text-gray-600 hover:text-green-600">Returns & Refunds</a></li>
-              <li><a href="#" className="text-xl text-gray-600 hover:text-green-600">Help Center</a></li>
+              <li><Link href="/contact" className="text-xl text-gray-600 hover:text-green-600">Help Center</Link></li>
             </ul>
 
           </div>

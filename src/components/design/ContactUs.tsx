@@ -210,7 +210,7 @@ export default function ContactUs() {
                   </div>
                   <button
                     type="button"
-                    className="cursor-pointer w-1/5 inline-flex justify-center items-center gap-2 py-3 px-4 border border-transparent shadow-sm text-sm font-medium rounded-lg text-white bg-green-600 hover:bg-green-700"
+                    className="cursor-pointer  inline-flex justify-center items-center gap-2 py-3 px-4 border border-transparent shadow-sm text-sm font-medium rounded-lg text-white bg-green-600 hover:bg-green-700"
                   >
                     <FontAwesomeIcon icon={faPaperPlane} />
                     Send Message

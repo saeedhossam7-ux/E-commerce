@@ -424,7 +424,7 @@ export default function Privacy() {
               </p>
             </article>
           </section>
-          <div className="my-12 border-t border-gray-200 pt-8 lg:flex items-center justify-between">
+          <div className="my-12 border-t border-gray-200 pt-8  space-y-7 flex flex-col lg:flex-row items-center justify-between">
             <Link href="/">
               <span className="group text-gray-800 bg-gray-100 px-5 py-3 rounded-lg dark:hover:text-black hover:bg-gray-200 transition-colors duration-300 mb-2">
                 <FontAwesomeIcon
