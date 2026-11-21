@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
-import "../styles/globals.css";
+import type { Metadata } from "next";
+import "@/src/styles/globals.css";
 import Footer from "../components/shared/Footer";
 import "../lib/Fontawesome";
 import Providers from "../components/providers/Providers";
@@ -10,6 +11,16 @@ import Navbar from "../components/shared/Navbar";
 import { getLoggedUserWishlist } from "../features/wishlist/server/wishlist.action";
 import { WishlistState } from "../features/wishlist/store/wishlist.store";
 import Provider from "../components/providers/ThemeProvider";
+import icon from "../assets/images/mini-logo.png";
+
+export const metadata: Metadata = {
+  title: "Fresh Cart",
+  description: "Fresh Cart is an online shopping platform that offers a wide range of products, including groceries, electronics, fashion, and more. Enjoy a seamless shopping experience with our user-friendly interface and secure checkout process.",
+  icons: {
+    icon: icon.src
+  },
+};
+
 
 let defaultCartState: CartState = {
   cartId: null,

@@ -85,8 +85,10 @@ export default function Navbar() {
                     <FontAwesomeIcon icon={faAngleDown} className="w-3 h-3" />
                   </li>
                   <li className=" mx-2 text-sm text-gray-600 hover:text-green-600 cursor-pointer flex items-center space-x-1">
-                    <span>English</span>
-                    <FontAwesomeIcon icon={faAngleDown} className="w-3 h-3" />
+                    <select className="cursor-pointer">
+                      <option>Arabic</option>
+                      <option>English</option>
+                    </select>
                   </li>
                 </ul>
               </div>
@@ -193,19 +195,19 @@ export default function Navbar() {
                 </>
               )}
             </div>
-<div className="flex gap-2 justify-center items-center">
-  <span className="lg:hidden"><ThemeBtn /></span>
+            <div className="flex gap-2 justify-center items-center">
+              <span className="lg:hidden"><ThemeBtn /></span>
               <button
-              className="lg:hidden bg-green-500 text-white p-1.5 rounded-lg cursor-pointer"
-              onClick={toggleMenu}
-            >
-              {isMenuOpen ? (
-                <FontAwesomeIcon icon={faXmark} className="w-6 h-6 " />
-              ) : (
-                <FontAwesomeIcon icon={faBars} className="w-6 h-6 " />
-              )}
-            </button>
-</div>
+                className="lg:hidden bg-green-500 text-white p-1.5 rounded-lg cursor-pointer"
+                onClick={toggleMenu}
+              >
+                {isMenuOpen ? (
+                  <FontAwesomeIcon icon={faXmark} className="w-6 h-6 " />
+                ) : (
+                  <FontAwesomeIcon icon={faBars} className="w-6 h-6 " />
+                )}
+              </button>
+            </div>
           </div>
         </div>
         <div className=" space-x-2 bg-gray-100 py-3 hidden lg:flex">
@@ -336,11 +338,12 @@ export default function Navbar() {
                   <li className="mb-2 hover:bg-gray-100 p-1">
                     <Link
                       href="/wishlist"
-                      className=" flex items-center gap-2 cursor-pointer hover:text-green-600 transition text-gray-700"
+                      onClick={toggleMenu}
+                      className="relative flex items-center gap-2 cursor-pointer hover:text-green-600 transition text-gray-700"
                     >
                       <FontAwesomeIcon icon={faHeart} className="w-5 h-5" />
                       {wishlistProducts.count > 0 && (
-                        <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-3 h-3 md:w-5 md:h-5 flex items-center justify-center">
+                        <span className="absolute -top-2 left-4 bg-red-500 text-white text-xs rounded-full w-4 h-4 md:w-5 md:h-5 flex items-center justify-center">
                           {wishlistProducts.count}
                         </span>
                       )}
@@ -350,6 +353,7 @@ export default function Navbar() {
                   <li className="mb-2 hover:bg-gray-100 p-1">
                     <Link
                       href="/cart"
+                      onClick={toggleMenu}
                       className="relative flex items-center gap-2 cursor-pointer hover:text-green-600 transition text-gray-700"
                     >
                       <FontAwesomeIcon
@@ -367,6 +371,7 @@ export default function Navbar() {
                   <li className="mb-2 hover:bg-gray-100 p-1">
                     <Link
                       href="/profile"
+                      onClick={toggleMenu}
                       className="flex items-center gap-2 cursor-pointer hover:text-green-600 transition text-gray-700"
                     >
                       <FontAwesomeIcon icon={faUser} className="w-5 h-5" />
@@ -384,6 +389,7 @@ export default function Navbar() {
                       >
                         <Link
                           href=""
+                          onClick={toggleMenu}
                           className="flex items-center gap-2 cursor-pointer hover:text-red-600 transition text-gray-700"
                         >
                           <FontAwesomeIcon
@@ -398,6 +404,7 @@ export default function Navbar() {
                         <li className="mb-2 hover:bg-gray-100 p-1">
                           <Link
                             href="/signup"
+                            onClick={toggleMenu}
                             className="flex items-center gap-2 cursor-pointer hover:text-green-600 transition text-gray-700 "
                           >
                             <FontAwesomeIcon
@@ -410,6 +417,7 @@ export default function Navbar() {
 
                         <li className="mb-2 hover:bg-gray-100 p-1">
                           <Link
+                            onClick={toggleMenu}
                             href="/login"
                             className="flex items-center gap-2 cursor-pointer hover:text-green-600 transition text-gray-700 "
                           >
