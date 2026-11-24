@@ -22,11 +22,12 @@ import {
   faArrowRightFromBracket,
 } from "@fortawesome/free-solid-svg-icons";
 import { faIdCard, faHeart, faUser } from "@fortawesome/free-regular-svg-icons";
-import { useEffect, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { AppState } from "@/src/store/store";
 import uselogout from "@/src/hooks/uselogout";
 import ThemeBtn from "../ui/ThemeBtn";
+import { usePathname, useSearchParams, useRouter } from "next/navigation";
 
 export default function Navbar() {
   const [isMounted, setIsMounted] = useState(false);
@@ -37,15 +38,42 @@ export default function Navbar() {
   const wishlistProducts = useSelector((state: AppState) => state.wishlist);
   const { numOfCartItems } = useSelector((state: AppState) => state.cart);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const pathname = usePathname();
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const initialSearch = searchParams.get("search") ?? "";
+  const [searchTerm, setSearchTerm] = useState(initialSearch);
+
   useEffect(() => {
     setIsMounted(true);
   }, []);
+
+  useEffect(() => {
+    setSearchTerm(searchParams.get("search") ?? "");
+  }, [searchParams]);
+
   function toggleMenu() {
     setIsMenuOpen(!isMenuOpen);
   }
+
   if (!isMounted) {
     return null;
   }
+
+  const hideSearch = pathname === "/login" || pathname === "/signup" || pathname === "/reset-password" || pathname === "/forgot-password";
+
+  const handleSearchSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const trimmed = searchTerm.trim();
+
+    if (!trimmed) {
+      router.push("/products");
+      return;
+    }
+
+    router.push(`/products?search=${encodeURIComponent(trimmed)}`);
+  };
 
   return (
     <>
@@ -108,21 +136,33 @@ export default function Navbar() {
               </h1>
             </Link>
 
-            <div className=" w-1/2  mx-auto  hidden lg:flex">
-              <div className="w-3/4 relative left-1/8">
-                <input
-                  type="text"
-                  placeholder="Search products..."
-                  className="w-full px-4 py-2 md:py-3 rounded-2xl border-2 border-gray-300 focus:outline-none focus:border-green-600 text-sm md:text-base"
-                />
-                <FontAwesomeIcon
-                  icon={faSearch}
-                  className="w-4 h-4 absolute right-3 md:right-4 top-1/2 transform -translate-y-1/2 text-gray-400"
-                />
-              </div>
-            </div>
+            {!hideSearch && (
+              <form
+                onSubmit={handleSearchSubmit}
+                role="search"
+                className="w-1/2  mx-auto  hidden lg:flex"
+              >
+                <div className="w-3/4 relative left-1/8">
+                  <input
+                    type="search"
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                    placeholder="Search products..."
+                    aria-label="Search products"
+                    className="w-full px-4 py-2 md:py-3 rounded-2xl border-2 border-gray-300 focus:outline-none focus:border-green-600 text-sm md:text-base"
+                  />
+                  <button
+                    type="submit"
+                    aria-label="Search"
+                    className="w-4 h-4 absolute right-3 md:right-11 top-1/4 text-gray-400"
+                  >
+                    <FontAwesomeIcon icon={faSearch} className="text-sm " />
+                  </button>
+                </div>
+              </form>
+            )}
 
-            <div className="  items-center gap-8 hidden lg:flex">
+            <div className="ml-auto  items-cente gap-8 hidden lg:flex">
               <Link
                 href="/wishlist"
                 className="relative p-1 md:p-2 cursor-pointer hover:text-green-600 transition text-gray-700"
@@ -210,93 +250,95 @@ export default function Navbar() {
             </div>
           </div>
         </div>
-        <div className=" space-x-2 bg-gray-100 py-3 hidden lg:flex">
-          <div className=" container mx-auto flex gap-4 items-center ">
-            <div className="relative group">
-              <button
-                type="button"
-                className=" bg-green-500 text-white px-4 py-2 cursor-pointer rounded-lg flex items-center gap-2"
-              >
-                <FontAwesomeIcon icon={faBars} className="w-4 h-4" />
-                <span>All Categories</span>
-                <FontAwesomeIcon icon={faAngleDown} className="w-4 h-4" />
-              </button>
-              <menu className="hidden group-hover:block absolute p-3 rounded-lg bg-white shadow-lg divide-y-2 divide-gray-100 *:hover:bg-gray-100">
-                <li>
-                  <Link href="" className="flex gap-1 items-center">
-                    <FontAwesomeIcon
-                      icon={faPerson}
-                      className="w-3 h-3 text-green-600"
-                    />
-                    <span> Men's Fashion</span>
-                  </Link>
+        {!hideSearch && (
+          <div className=" space-x-2 bg-gray-100 py-3 hidden lg:flex">
+            <div className=" container mx-auto flex gap-4 items-center ">
+              <div className="relative group">
+                <button
+                  type="button"
+                  className=" bg-green-500 text-white px-4 py-2 cursor-pointer rounded-lg flex items-center gap-2"
+                >
+                  <FontAwesomeIcon icon={faBars} className="w-4 h-4" />
+                  <span>All Categories</span>
+                  <FontAwesomeIcon icon={faAngleDown} className="w-4 h-4" />
+                </button>
+                <menu className="hidden group-hover:block absolute p-3 rounded-lg bg-white shadow-lg divide-y-2 divide-gray-100 *:hover:bg-gray-100">
+                  <li>
+                    <Link href="" className="flex gap-1 items-center">
+                      <FontAwesomeIcon
+                        icon={faPerson}
+                        className="w-3 h-3 text-green-600"
+                      />
+                      <span> Men's Fashion</span>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="" className="flex gap-1 items-center">
+                      <FontAwesomeIcon
+                        icon={faPersonDress}
+                        className="w-3 h-3 text-green-600"
+                      />
+                      <span> Women's Fashion</span>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="" className="flex gap-1 items-center">
+                      <FontAwesomeIcon
+                        icon={faBabyCarriage}
+                        className="w-3 h-3 text-green-600"
+                      />
+                      <span>Baby & Toys</span>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="" className="flex gap-1 items-center">
+                      <FontAwesomeIcon
+                        icon={faBriefcaseMedical}
+                        className="w-3 h-3 text-green-600"
+                      />
+                      <span>Beauty & Health</span>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="" className="flex gap-1 items-center">
+                      <FontAwesomeIcon
+                        icon={faBolt}
+                        className="w-3 h-3 text-green-600"
+                      />
+                      <span>Electronics</span>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="" className="flex gap-1 items-center">
+                      <FontAwesomeIcon
+                        icon={faEllipsis}
+                        className="w-3 h-3 text-green-600"
+                      />
+                      <span>View All Categories</span>
+                    </Link>
+                  </li>
+                </menu>
+              </div>
+              <ul className="flex space-x-6 py-3 text-gray-500">
+                <li className=" hover:text-green-500 transition-colors duration-300 ">
+                  <Link href="/">Home</Link>
                 </li>
-                <li>
-                  <Link href="" className="flex gap-1 items-center">
-                    <FontAwesomeIcon
-                      icon={faPersonDress}
-                      className="w-3 h-3 text-green-600"
-                    />
-                    <span> Women's Fashion</span>
-                  </Link>
+                <li className=" hover:text-green-500 transition-colors duration-300 ">
+                  <Link href="/products/id">Recently Added</Link>
                 </li>
-                <li>
-                  <Link href="" className="flex gap-1 items-center">
-                    <FontAwesomeIcon
-                      icon={faBabyCarriage}
-                      className="w-3 h-3 text-green-600"
-                    />
-                    <span>Baby & Toys</span>
-                  </Link>
+                <li className=" hover:text-green-500 transition-colors duration-300 ">
+                  <Link href="/products/id">Featured Products</Link>
                 </li>
-                <li>
-                  <Link href="" className="flex gap-1 items-center">
-                    <FontAwesomeIcon
-                      icon={faBriefcaseMedical}
-                      className="w-3 h-3 text-green-600"
-                    />
-                    <span>Beauty & Health</span>
-                  </Link>
+                <li className=" hover:text-green-500 transition-colors duration-300 ">
+                  <Link href="/">Offers</Link>
                 </li>
-                <li>
-                  <Link href="" className="flex gap-1 items-center">
-                    <FontAwesomeIcon
-                      icon={faBolt}
-                      className="w-3 h-3 text-green-600"
-                    />
-                    <span>Electronics</span>
-                  </Link>
+                <li className=" hover:text-green-500 transition-colors duration-300 ">
+                  <Link href="/branddetails">Brands</Link>
                 </li>
-                <li>
-                  <Link href="" className="flex gap-1 items-center">
-                    <FontAwesomeIcon
-                      icon={faEllipsis}
-                      className="w-3 h-3 text-green-600"
-                    />
-                    <span>View All Categories</span>
-                  </Link>
-                </li>
-              </menu>
+              </ul>
             </div>
-            <ul className="flex space-x-6 py-3 text-gray-500">
-              <li className=" hover:text-green-500 transition-colors duration-300 ">
-                <Link href="/">Home</Link>
-              </li>
-              <li className=" hover:text-green-500 transition-colors duration-300 ">
-                <Link href="/products/id">Recently Added</Link>
-              </li>
-              <li className=" hover:text-green-500 transition-colors duration-300 ">
-                <Link href="/products/id">Featured Products</Link>
-              </li>
-              <li className=" hover:text-green-500 transition-colors duration-300 ">
-                <Link href="/">Offers</Link>
-              </li>
-              <li className=" hover:text-green-500 transition-colors duration-300 ">
-                <Link href="/branddetails">Brands</Link>
-              </li>
-            </ul>
           </div>
-        </div>
+        )}
         {isMenuOpen && (
           <>
             <div
@@ -304,7 +346,7 @@ export default function Navbar() {
               onClick={toggleMenu}
             ></div>
             <div className=" offcanvas fixed top-0 bottom-0 z-50 bg-white p-6 w-2/3 ">
-              <div className="flex justify-between items-center mb-6 border-b border-gray-300 pb-4">
+              <Link onClick={toggleMenu} href="/" className="flex justify-between items-center mb-6 border-b border-gray-300 pb-4">
                 <Image
                   src={logo}
                   alt="FreshCart Logo"
@@ -318,20 +360,33 @@ export default function Navbar() {
                 >
                   <FontAwesomeIcon icon={faXmark} className="w-5 h-5" />
                 </button>
-              </div>
-              <div className=" w-full mx-auto mb-3">
-                <div className="w-full relative ">
+              </Link>
+              {!hideSearch && (
+                <form
+                  onSubmit={(e) => {
+                    handleSearchSubmit(e)
+                    toggleMenu()
+                  }}
+                  role="search"
+                  className="flex flex-1 max-w-md items-center rounded-full border border-gray-300 px-3 py-1.5 mb-2"
+                >
                   <input
-                    type="text"
+                    type="search"
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
                     placeholder="Search products..."
-                    className="w-full px-4 py-2  rounded-xl border-2 border-gray-300 focus:outline-none focus:border-green-600 text-sm md:text-base"
+                    aria-label="Search products"
+                    className="w-full bg-transparent px-2 text-sm outline-none"
                   />
-                  <FontAwesomeIcon
-                    icon={faSearch}
-                    className="w-4 h-4 absolute right-3 md:right-4 top-1/2 transform -translate-y-1/2 text-gray-400"
-                  />
-                </div>
-              </div>
+                  <button
+                    type="submit"
+                    aria-label="Search"
+                    className="cursor-pointer flex h-8 w-8 shrink-0 items-center justify-center rounded-full transition hover:bg-emerald-500/15"
+                  >
+                    <FontAwesomeIcon icon={faSearch} className="text-sm" />
+                  </button>
+                </form>
+              )}
               <div>
                 <h2 className="text-lg font-semibold mb-5">Main Menu</h2>
                 <ul>
