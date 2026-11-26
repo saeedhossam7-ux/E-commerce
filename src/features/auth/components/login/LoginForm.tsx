@@ -51,11 +51,7 @@ export default function LoginForm() {
         }, 3000);
       } else {
         if (response?.errors) {
-          Object.keys(response.errors).forEach((key) => {
-            setError(key as keyof LoginSchemaType, {
-              message: response.errors[key],
-            });
-          });
+         toast.error(response.message)
         }
       }
     } catch (error) {

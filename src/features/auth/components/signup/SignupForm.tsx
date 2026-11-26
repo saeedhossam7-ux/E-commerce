@@ -29,31 +29,29 @@ export default function SignupForm() {
     },
     resolver: zodResolver(SignupSchema),
 
-    mode: "onSubmit",
-    reValidateMode: "onChange",
+    mode: "onChange",
+    reValidateMode: "onSubmit",
   });
 
   const onSubmit: SubmitHandler<formData> = async (values) => {
     try {
-      const response = await signupAction(values);
-      if (response?.success) {
-        toast.success(response.message);
+      const date = await signupAction(values)
+      if (date?.data?.message === 'success') {
+        toast.success(date?.message)
         setTimeout(() => {
-          router.push("/login");
-        }, 3000);
+          router.push('/login')
+        }, 2000)
       } else {
-        if (response?.errors) {
-          Object.keys(response.errors).forEach((field) => {
-            setError(field as keyof formData, {
-              message: response.errors[field],
-            });
-          });
+        if (date?.errors) {
+          Object.keys(date?.errors).forEach((key) => {
+            setError(key as keyof formData, { message: date?.message })
+          })
         } else {
-          toast.error(response?.message);
+          toast.error(date?.message)
         }
       }
     } catch (error) {
-      toast.error("An unexpected error occurred. Please try again.");
+      toast.error('Signup failed. Please try again later.')
     }
   };
 

@@ -1,36 +1,42 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🛒 FreshCart — Modern E-Commerce Web Application
 
-## Getting Started
+**FreshCart** is a responsive, full-featured e-commerce web application built with **Next.js (App Router)** and **TypeScript**. Designed with clean architecture and modern UI/UX practices, it delivers fast browsing, real-time URL-synchronized search, bilingual support with dynamic layout direction, and full theme customization.
 
-First, run the development server:
+> 🔗 **Live Demo:** [https://e-commerce-orpin-nine-95.vercel.app/]
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## ✨ Key Features
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Server-First Architecture:** Combines Next.js Server Components and Server Actions for fast data fetching and secure form submissions with interactive Client Components.
+- **URL-Synchronized Search:** Real-time product filtering synced with URL query parameters (`?search=...`) for shareable and persistent search states, complete with custom Light/Dark Empty States.
+- **Dark & Light Mode:** Polished, accessible color schemes across all pages and components powered by **Tailwind CSS**.
+- **Authentication & Schema Validation:** Type-safe Login and Signup flows built with **React Hook Form**, **Zod**, **Axios**, and Next.js Server Actions.
+- **Cart & Wishlist Management:** Centralized client state management using **Redux Toolkit** for smooth shopping cart and wishlist interactions.
+- **Interactive User Feedback:** Instant toast notifications and confirmation dialogs powered by **React-Toastify** and **SweetAlert**.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## 🛠️ Tech Stack
 
-To learn more about Next.js, take a look at the following resources:
+| Category | Technologies |
+| :--- | :--- |
+| **Framework & Language** | Next.js (App Router), TypeScript |
+| **Styling & Icons** | Tailwind CSS, Font Awesome |
+| **State Management** | Redux Toolkit |
+| **Data Fetching** | Axios |
+| **Forms & Validation** | React Hook Form, Zod |
+| **Alerts & Notifications** | React-Toastify, SweetAlert |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 📂 Project Structure
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```text
+src/
+├── app/                  # Next.js App Router pages, layouts & routes
+├── components/           # Shared UI components (Navbar, Footer, etc.)
+├── features/             # Domain-based modules (Products, Auth, Cart, Wishlist)
+├── store/                # Redux Toolkit store & slices
+├── types/                # Shared TypeScript interfaces & API response types
+└── utils/                # Helper functions & API configurations
